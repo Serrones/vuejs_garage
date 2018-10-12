@@ -7,10 +7,14 @@
 </head>
 <body>
     <div id="app">
-        <h1>Hello {{ giveHi() }}</h1>
+        <h1 v-once>Hello {{ greetings }}</h1><!--If you wanna just the first render of a variable -->
+        <p>{{ giveHi() }}</p>
         <input type="text" v-on:input="changeName"><br />
         <p>{{ name }}, welcome to jsXperience!</p><br />
         <a v-bind:href="link">explore the universe</a> <!--Using directives for binding attributes-->
+        <hr>
+        <p>{{ completeLink }}</p> <!-- it doesn't rendered -->
+        <p v-html='completeLink'></p><!-- If you wanna enable html tag-->
     </div>
 
     <script>
@@ -19,7 +23,8 @@
       data: {
       	greetings: "World!",
         name: "'Choose your name'",
-        link: "http://www.google.com"
+        link: "http://www.google.com",
+        completeLink: "<a href='http://www.google.com'>Google</a>" // passing html tag inside string
       },
       methods: {
       	changeName: function (event){
