@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>simple vuejs</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Hello {{ greetings }}</h1>
+        <input type="text" v-on:input="changeName"><br />
+        <p>{{ name }}, welcome to jsXperience!</p><br />
+    </div>
+
+    <script>
+    new Vue({
+    	el: "#app",
+      data: {
+      	greetings: "World!",
+        name: "'Choose your name'"
+      },
+      methods: {
+      	changeName: function (event){
+        	this.name = event.target.value;
+        }
+      }
+  });
+    </script>
+
+</body>
+<html>
