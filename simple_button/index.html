@@ -7,10 +7,14 @@
 </head>
 <body>
     <div id="app">
-        <button v-on:click="increase">Click me</button>
+        <button v-on:click="increase(20, $event)">Click me</button>
         <p>{{ counter }}</p>
         <hr>
-        <p v-on:mousemove="updateCoordinate">Coordinates: {{ x }}, {{ y }}</p>
+        <p v-on:mousemove="updateCoordinate">
+            Coordinates: {{ x }}, {{ y }}<br/>
+            <span v-on:mousemove="dummy">Dead Spot whit function</span><br/>
+            <span v-on:mousemove.stop="">Dead Spot whit Modifier</span><br/>
+        </p>
     </div>
 
     <script>
@@ -22,12 +26,15 @@
           y: 0
       	},
       methods: {
-          increase: function() {
-              this.counter++;
+          increase: function(plus, event) {
+              this.counter += plus;
           },
           updateCoordinate: function(event){
               this.x = event.clientX;
               this.y = event.clientY;
+          },
+          dummy: function(event){
+              event.stopPropagation();
           }
       	}
   });
