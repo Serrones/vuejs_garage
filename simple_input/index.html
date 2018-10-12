@@ -7,9 +7,10 @@
 </head>
 <body>
     <div id="app">
-        <h1>Hello {{ greetings }}</h1>
+        <h1>Hello {{ giveHi() }}</h1>
         <input type="text" v-on:input="changeName"><br />
         <p>{{ name }}, welcome to jsXperience!</p><br />
+        <a v-bind:href="link">explore the universe</a> <!--Using directives for binding attributes-->
     </div>
 
     <script>
@@ -17,11 +18,16 @@
     	el: "#app",
       data: {
       	greetings: "World!",
-        name: "'Choose your name'"
+        name: "'Choose your name'",
+        link: "http://www.google.com"
       },
       methods: {
       	changeName: function (event){
         	this.name = event.target.value;
+        },
+        giveHi: function (){
+            this.greetings = 'Fuckers'; // Changing value's attribute
+            return this.greetings;
         }
       }
   });
