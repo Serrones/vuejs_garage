@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>age_name</title>
+        <script src="../vue.js"></script>
+    </head>
+    <body>
+        <div id="ex1">
+            <div>
+                <!-- Fill the <p> bellow with your name and age using Interpolation-->
+                <p >Vuejs is pretty cool -- {{ name }} ({{ age }})</p>
+            </div>
+            <hr>
+            <div>
+                <!-- Output your age multiplied by 3-->
+                <p>{{ changeAge() }}</p>
+                <!-- Call a function to output a random float between 0 and 1-->
+                <p>{{ trueFalse() }}</p>
+            </div>
+            <hr>
+            <div>
+                <!-- Search  any image on Google and output  it here  by binding the "src" attribute-->
+                <p v-html="goodImage"></p>
+            </div>
+            </hr>
+            <div>
+                <!-- Pre populate this input with your skill (set the "value" attribute)-->
+                <input type="text" v-on:input="inputSkill"><br />
+                <p>{{ skill }} is a good skill!</p><br />
+            </div>
+        </div>
+    </body>
+
+
+    <script>
+
+    new Vue({
+        el:"#ex1",
+        data: {
+            name:"Serrones",
+            age:40,
+            goodImage:"<img src='../img/vue_city.jpg' alt='Vue' height='420' width='900'>",
+            skill: "Love"
+        },
+        methods: {
+            changeAge: function(){
+                return this.age * 3
+            },
+            trueFalse: function(){
+                return Math.random()
+            },
+            inputSkill: function(event){
+                this.skill = event.target.value;
+            }
+        }
+    })
+    </script>
