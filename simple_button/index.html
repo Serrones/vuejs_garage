@@ -15,6 +15,8 @@
             <span v-on:mousemove="dummy">Dead Spot whit function</span><br/>
             <span v-on:mousemove.stop="">Dead Spot whit Modifier</span><br/>
         </p>
+        <hr>
+        <input v-on:keyup.enter="alertMe">
     </div>
 
     <script>
@@ -35,6 +37,9 @@
           },
           dummy: function(event){
               event.stopPropagation();
+          },
+          alertMe: function(event){
+              alert("Alert")
           }
       	}
   });
