@@ -21,6 +21,12 @@
         </p>
         <hr>
         <input v-on:keyup.enter="alertMe">
+        <hr>
+        <!-- Using two-way binding -->
+        <div>
+            <input type="text" v-model="name">
+            <p>{{ name }}
+        </div>
     </div>
 
     <script>
@@ -29,7 +35,8 @@
       data: {
           counter: 0,
           x: 0,
-          y: 0
+          y: 0,
+          name: "Serrones"
       	},
       methods: {
           increase: function(plus, event) {
