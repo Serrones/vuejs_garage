@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ex_2</title>
+        <script src="../vue.js"></script>
+    </head>
+    <body>
+        <div id="ex2">
+            <!-- Show an alert when the Button gets clicked-->
+            <div>
+                <button v-on:click="showAlert">Framework</button>
+            </div>
+            <hr>
+            <!-- Listen to the "keydown" event and store the value in a data
+            property (hint: event.target.value gives you the value)-->
+            <div>
+                <input type="text" v-on:keyup="plusValue">
+                <p>{{ value }}</p>
+            </div>
+            <!-- Adjust the example from 2 to only fire if the keydown is the
+                Enter key-->
+            <hr>
+            <div>
+                <div>
+                    <!-- instead create a function, call directly-->
+                    <input type="text" v-on:keydown.enter="value2 = $event.target.value">
+                    <p>{{ value2 }}</p>
+                </div>
+
+        </div>
+    </body>
+
+
+    <script>
+
+    new Vue({
+        el:"#ex2",
+        data: {
+            value: "Nada",
+            value2: "Abacaxi"
+        },
+        methods: {
+            showAlert: function(event){
+                alert('Vue js');
+            },
+            plusValue: function(event){
+                this.value = event.target.value;
+            }
+        }
+    })
+    </script>
