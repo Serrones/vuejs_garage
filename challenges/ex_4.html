@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ex_4</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div id="ex4">
+        <!--Start the effect with the button. The effect should alternate <thead>
+            "highlight" or "shrink" class with nem setInterval tick (attach
+            respective class to the div with id "effect" bellow)-->
+        <div>
+            <button @click="startEffect">Start Effect</button>
+            <div id="effect" v-bind:class="effectClasses"></div>
+        </div>
+        <hr>
+        <!-- Create a couple of CSS classes and attach them via the array
+        syntax-->
+        <div v-bind:class="[blue, 'float', 'text']">I got no class :</div>
+        <hr>
+        <!-- Let the user enter a class (create some example classes) and
+        attach it-->
+        <div>
+            <input type="text" v-model='userClass'>
+            <div v-bind:class="[{visible: true}, userClass]"></div>
+        </div>
+        <hr>
+        <!-- Let the user enter a class and enter true/false for another
+        class (create some example clases) and attach the classes-->
+        <div>
+            <input type="text" v-model='userClass'>
+            <input type="text" v-model='isVisible'>
+            <div v-bind:class="[{visible: isVisible}, userClass]"></div>
+        </div>
+        <hr>
+        <!-- Let the user enter a style name and attach it-->
+        <div>
+            <input type="text" v-model='myStyle.backgroundColor'>
+            <div v-bind:style='myStyle'></div>
+        </div>
+        <hr>
+        <!-- Create a simple progress bar with setInterval and syle bindings.
+        Start it by hitting the bellow button -->
+        <div>
+            <button v-on:click='startProgress'>Start Progress</button>
+            <div v-bind:class="['progress-bar']" v-bind:style='progressBar'></div>
+        </div>
+    </div>
+
+    <script>
+    new Vue({
+    	el: "#ex4",
+        data: {
+            effectClasses: {
+                highlight: false,
+                shrink: true
+            },
+            blue: "blue",
+            userClass: "",
+            isVisible: true,
+            myStyle: {
+                width: "100px",
+                height: "100px",
+                backgroundColor: "black"
+            },
+            progressBar: {
+                width: '0px',
+                backgroundColor: 'red'
+            }
+        },
+        methods: {
+            startEffect: function() {
+                var vm = this;
+                setInterval(function() {
+                    vm.effectClasses.highlight = !vm.effectClasses.highlight;
+                    vm.effectClasses.shrink = !vm.effectClasses.shrink;
+                }, 1000)
+            },
+            startProgress: function() {
+                var vm = this;
+                var width = 0;
+                setInterval(function(){
+                    width = width + 10;
+                    vm.progressBar.width = width + 'px';
+                }, 500)
+            }
+        }
+
+  });
+    </script>
+
+</body>
+<html>

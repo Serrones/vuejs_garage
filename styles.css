@@ -17,3 +17,40 @@
 .blue {
     background-color: blue;
 }
+
+#effect {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.highlight {
+    background-color: green !important;
+    width: 300px !important;
+    height: 300px !important;
+}
+
+.shrink {
+    background-color: red !important;
+    width: 100px !important;
+    height: 100px !important;
+}
+
+.float {
+    float: right;
+}
+
+.text {
+    color: yellow;
+}
+
+.visible {
+    width: 100px;
+    height: 100px;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 20px;
+    border: 1px solid black;
+}
